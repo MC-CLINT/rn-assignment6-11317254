@@ -66,8 +66,8 @@ export default function CartScreen() {
         <View style={styles.footer}>
             <Text style={{fontSize: 25, bottom: 40, right: 30}}>EST. TOTAL</Text>
             <Text style={{fontSize: 25, bottom: 40, right: 10, left:180}}>$240</Text>
-            <Icon style={{marginRight:20, right:60 }} name="shopping-bag" size={20} color="black"  />
-            <Text style={{fontSize:25, right: 65}}>CHECKOUT</Text>
+            <Icon style={{marginRight:20, right:60 }} name="shopping-bag" size={20} color="white"  />
+            <Text style={{fontSize:25, right: 65, color: 'white'}}>CHECKOUT</Text>
         </View>
 
         </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 250,
         height: 50,
-        backgroundColor: 'orange',
+        backgroundColor: 'black',
         justifyContent: 'center',
         alignItems: 'center',
     },

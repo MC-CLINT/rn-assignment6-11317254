@@ -115,19 +115,12 @@ export default function HomeScreen() {
     <Icon style={{ top:8, opacity:0.7}} name="list" size={25} color="black"  />
     </View>
     </TouchableOpacity>
-    {isListVisible && (
-                <View style={styles.ListCon}>
-                    <Text>Office Wear</Text>
-                    <Text>Church wear</Text>
-                    <Text>Lamerei</Text>
-                    <Text>21WN...</Text>
-                </View>
-            )}
+    
     <View style={styles.filterCon}>
         <Icon style={{top:8}} name="filter" size={25} color="orange"  />
     </View>
 </View>
- <View style={styles.itemsContainer}>
+{!isListVisible && (<View style={styles.itemsContainer}>
                 {sampleItems.map(item => (
                     <View key={item.id} style={styles.item}>
                         <Image style={{ height: 230, width: 170, marginTop:30, }} source={item.image} />
@@ -142,6 +135,7 @@ export default function HomeScreen() {
                     </View> 
                 ))}
             </View>
+            )}
 </ScrollView>
         
     );
