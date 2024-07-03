@@ -6,7 +6,7 @@
 ## Brief explanation of design choices and how data storage was implemented
 
 
-# **Design Choices:**
+### **Design Choices:**
 In the design of **CartScreen.js**, the focus is on effective state management and ensuring data persistence for a seamless user experience. **The use of `useState`** allows for dynamic state management of the cart items, while **`useEffect`** ensures that items previously added to the cart are fetched from `AsyncStorage` when the component mounts. This guarantees that the cart maintains its contents across app restarts. The **`removeFromCart`** function updates both the cart state and **`AsyncStorage`**, providing a smooth removal process and notifying the user upon successful removal. The screen layout features a prominent header, a conveniently placed search icon, and a clearly marked checkout header. Each cart item is displayed with its image, name, description, price, and a button for removal. **The footer** offers a summary of the total cost and a checkout button, facilitating a straightforward and intuitive checkout process for the user.
 
 **HomeScreen.js** is designed with a focus on state management and navigation to enhance the shopping experience. The use of `useState` manages the visibility of the category list, while **`useNavigation`** facilitates seamless transitions between the home and cart screens. **The `addToCart`** function ensures items are added to the cart and stored in **`AsyncStorage`**, maintaining consistency in the cart’s contents. The screen’s design includes a comprehensive header featuring menu, search, and shopping cart icons. The category list can be toggled for visibility, enhancing the browsing experience. Sample items are displayed in a visually appealing grid-like layout, optimizing space usage and making the most of the screen real estate. Consistency in design elements across both screens ensures a cohesive user experience, while the use of interactive elements like `TouchableOpacity` enhances usability and engagement, making the app both functional and user-friendly. 
@@ -15,7 +15,7 @@ In the design of **CartScreen.js**, the focus is on effective state management a
 
 
 
-# **Implementation of Data Storage:**
+### **Implementation of Data Storage:**
 
 #### CartScreen.js
 
