@@ -32,3 +32,13 @@ This approach ensures that items added to the cart are immediately stored and av
 
 
 ## ScreenShots of the App
+
+![HomeScreen 1](MyApp/assets/Home1.jpg)
+
+![HomeScreen 2](MyApp/assets/Home2.jpg)
+
+![HomeScreen 3](MyApp/assets/Home3.jpg)
+
+![CartScreen 1](MyApp/assets/CartScreen1.jpg)
+
+![CartScreen 2](MyApp/assets/CartScreen2.jpg)
