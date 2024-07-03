@@ -1,10 +1,19 @@
 import React from "react";
-import {View, Text, StyleSheet, SafeAreaView, ScrollView } from "react-native";
+import {useState } from "react";
+import {View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {useNavigation} from '@react-navigation/native';
 import { Image } from "react-native";
 
 
 export default function HomeScreen() {
+    const navigation = useNavigation();
+    const [isListVisible, setIsListVisible] = useState(false);
+
+    const toggleListVisibility = () => {
+        setIsListVisible(!isListVisible);
+    };
+    
     return (
        
 <ScrollView>
@@ -21,15 +30,27 @@ export default function HomeScreen() {
         </View>
        <View style={styles.rightHead}>
             <Icon style={styles.seacrhIcon} name="search" size={30} color="black"  />
+            <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
             <Icon style={styles.shoppingIcon} name="shopping-bag" size={30} color="black"  />
+            </TouchableOpacity>
        </View>
 </View>
 
 <View style={styles.HomeHead}>
     <Text style={{fontSize:30, letterSpacing: 8}}> OUR STORY</Text>
+    <TouchableOpacity onPress={toggleListVisibility}>
     <View style={styles.ListViewCon}>
     <Icon style={{ top:8, opacity:0.7}} name="list" size={25} color="black"  />
     </View>
+    </TouchableOpacity>
+    {isListVisible && (
+                <View style={styles.ListCon}>
+                    <Text>Office Wear</Text>
+                    <Text>Church wear</Text>
+                    <Text>Lamerei</Text>
+                    <Text>21WN...</Text>
+                </View>
+            )}
     <View style={styles.filterCon}>
         <Icon style={{top:8}} name="filter" size={25} color="orange"  />
     </View>
@@ -46,7 +67,7 @@ export default function HomeScreen() {
       <Text style={{fontSize: 30, color:'orange', left:20, top: -10}}>$120</Text>
     </View>
     <View>
-        <Image style={{height: 200, width: 150, top: 20, right: 20}} source={require('./assets/dress2.png') } />
+        <Image style={{height: 200, width: 150, top: 20, right: 20, zIndex:0}} source={require('./assets/dress2.png') } />
         <View style={styles.circle2}>
         <Icon style={{ left: 6}} name="plus" size={20} color="black"  />
         </View>
@@ -136,7 +157,6 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        backgroundColor: 'pink',
         padding: 20,
         bottom: -40,
     },
@@ -161,9 +181,8 @@ const styles = StyleSheet.create({
     },
     HomeHead: {
         flexDirection: 'row',
-        top: 50,
+        top: 60,
         height: 60,
-        backgroundColor: 'yellow',
         alignContent: 'center',
         justifyContent: 'space-between',
     },
@@ -191,22 +210,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         top: 60,
         height: 310,
-        backgroundColor: 'blue',
         justifyContent: 'space-between',
         alignContent: 'center',
+        zIndex: 1,
     },
     View2: {
         flexDirection: 'row',
         top: 65,
         height: 300,
-        backgroundColor: 'green',
         justifyContent: 'space-between',
     },
     View3: {
         flexDirection: 'row',
         top: 70,
         height: 300,
-        backgroundColor: 'red',
         justifyContent: 'space-between',
     },
     View4: {
@@ -214,7 +231,6 @@ const styles = StyleSheet.create({
         top: 75,
         height: 320,
         marginBottom:10,
-        backgroundColor: 'purple',
         justifyContent: 'space-between',
     },
     View5: {
@@ -241,5 +257,18 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         left: 95,
         bottom: 20
-    }
+    },
+    ListCon: {
+        backgroundColor: 'lightgrey',
+        height: 75,
+        width: 70,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        top: 0,
+        left: -110,
+        zIndex: 1,
+    },
+
 });
