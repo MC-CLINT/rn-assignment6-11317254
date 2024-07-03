@@ -4,6 +4,7 @@ import {View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView } fro
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 import { Image } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function HomeScreen() {
@@ -13,6 +14,77 @@ export default function HomeScreen() {
     const toggleListVisibility = () => {
         setIsListVisible(!isListVisible);
     };
+
+    const addToCart = async (item) => {
+        try {
+            let cart = await AsyncStorage.getItem('cart');
+            cart = cart ? JSON.parse(cart) : [];
+            cart.push(item);
+            await AsyncStorage.setItem('cart', JSON.stringify(cart));
+            alert('Item added to cart');
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const sampleItems = [
+        {
+            id: 1,
+            name: 'Office Wear',
+            description: 'Office Wear for your office',
+            price: 120,
+            image: require('./assets/dress1.png'),
+        },
+        {
+            id: 2,
+            name: 'Black',
+            description: 'reversible angora cardigan',
+            price: 120,
+            image: require('./assets/dress2.png'),
+        },
+        {
+            id: 3,
+            name: 'Church Wear',
+            description: 'recycle boucle knit cardigan pink',
+            price: 120,
+            image: require('./assets/dress3.png'),
+        },
+        {
+            id: 4,
+            name: 'Lamerei',
+            description: 'recycle boucle knit cardigan pink',
+            price: 120,
+            image: require('./assets/dress4.png'),
+        },
+        {
+            id: 5,
+            name: '21WN',
+            description: 'reversible angora cardigan',
+            price: 120,
+            image: require('./assets/dress5.png'),
+        },
+        {
+            id: 6,
+            name: 'Lopo',
+            description: 'reversible angora cardigan',
+            price: 120,
+            image: require('./assets/dress6.png'),
+        },
+        {
+            id: 7,
+            name: '21WN',
+            description: 'reversible angora cardigan',
+            price: 120,
+            image: require('./assets/dress7.png'),
+        },
+        {
+            id: 8,
+            name: 'Lame',
+            description: 'reversible angora cardigan',
+            price: 120,
+            image: require('./assets/dress3.png'),
+        },
+    ];
     
     return (
        
@@ -55,97 +127,21 @@ export default function HomeScreen() {
         <Icon style={{top:8}} name="filter" size={25} color="orange"  />
     </View>
 </View>
-
-<View style={styles.View1}>
-    <View>
-      <Image style={{height: 200, width: 150, top: 20, left: 20}} source={require('./assets/dress1.png') } />
-      <View style={styles.circle}>
-        <Icon style={{ left: 6}} name="plus" size={20} color="black"  />
-        </View>
-      <Text style={{fontSize:20, fontWeight:'500', top:-10, left:15}}> Office Wear</Text>
-      <Text style={{fontSize:15, left:18, top: -12}}>reversible angora cardigan</Text>
-      <Text style={{fontSize: 30, color:'orange', left:20, top: -10}}>$120</Text>
-    </View>
-    <View>
-        <Image style={{height: 200, width: 150, top: 20, right: 20, zIndex:0}} source={require('./assets/dress2.png') } />
-        <View style={styles.circle2}>
-        <Icon style={{ left: 6}} name="plus" size={20} color="black"  />
-        </View>
-        <Text style={{fontSize:20, fontWeight:'500', top:-10, left:-23}}> Black</Text>
-      <Text style={{fontSize:15, left:-20, top: -12}}>reversible angora cardigan</Text>
-      <Text style={{fontSize: 30, color:'orange', left:-20, top: -10}}>$120</Text>
-    </View>
-</View>
-
-<View style={styles.View2}>
-    <View>
-        <Image style={{height: 200, width: 150, top: 20, left: 20}} source={require('./assets/dress3.png') } />
-        <View style={styles.circle}>
-        <Icon style={{ left: 6}} name="plus" size={20} color="black"  />
-        </View>
-        <Text style={{fontSize:20, fontWeight:'500', top:-10, left:15}}> Church Wear</Text>
-      <Text style={{fontSize:15, left:18, top: -12}}>reversible angora cardigan</Text>
-      <Text style={{fontSize: 30, color:'orange', left:20, top: -10}}>$120</Text>
-    </View>
-    <View>
-        <Image style={{height: 200, width: 150, top: 20, right: 20}} source={require('./assets/dress4.png') } />
-
-        <View style={styles.circle2}>
-        <Icon style={{ left: 6}} name="plus" size={20} color="black"  />
-        </View>
-        <Text style={{fontSize:20, fontWeight:'500', top:-10, left:-23}}> Lamerei</Text>
-      <Text style={{fontSize:15, left:-20, top: -12}}>reversible angora cardigan</Text>
-      <Text style={{fontSize: 30, color:'orange', left:-20, top: -10}}>$120</Text>
-    </View>
-</View>
-
-<View style={styles.View3}>
-    <View>
-        <Image style={{height: 200, width: 150, top: 20, left: 20}} source={require('./assets/dress5.png') } />
-        <View style={styles.circle}>
-        <Icon style={{ left: 6}} name="plus" size={20} color="black"  />
-        </View>
-        <Text style={{fontSize:20, fontWeight:'500', top:-10, left:15}}> 21WN</Text>
-      <Text style={{fontSize:15, left:18, top: -12}}>reversible angora cardigan</Text>
-      <Text style={{fontSize: 30, color:'orange', left:20, top: -10}}>$120</Text>
-    </View>
-    <View>
-        <Image style={{height: 200, width: 150, top: 20, right: 20}} source={require('./assets/dress6.png') } />
-        <View style={styles.circle2}>
-        <Icon style={{ left: 6}} name="plus" size={20} color="black"  />
-        </View>
-        <Text style={{fontSize:20, fontWeight:'500', top:-10, left:-23}}> Lopo</Text>
-      <Text style={{fontSize:15, left:-20, top: -12}}>reversible angora cardigan</Text>
-      <Text style={{fontSize: 30, color:'orange', left:-20, top: -10}}>$120</Text>
-    </View>
-
-</View>
-
-<View style={styles.View4}>
-    <View>
-        <Image style={{height: 200, width: 150, top: 20, left: 20}} source={require('./assets/dress7.png') } />
-        <View style={styles.circle}>
-        <Icon style={{ left: 6}} name="plus" size={20} color="black"  />
-        </View>
-        
-        <Text style={{fontSize:20, fontWeight:'500', top:-10, left:15}}> 21WN</Text>
-      <Text style={{fontSize:15, left:18, top: -12}}>reversible angora cardigan</Text>
-      <Text style={{fontSize: 30, color:'orange', left:20, top: -10}}>$120</Text>
-    </View>
-
-    <View>
-        <Image style={{height: 200, width: 150, top: 20, right: 20}} source={require('./assets/dress3.png') } />
-        <View style={styles.circle2}>
-        <Icon style={{ left: 6}} name="plus" size={20} color="black"  />
-        </View>
-        <Text style={{fontSize:20, fontWeight:'500', top:-10, left:-23}}> Lame</Text>
-      <Text style={{fontSize:15, left:-20, top: -12}}>reversible angora cardigan</Text>
-      <Text style={{fontSize: 30, color:'orange', left:-20, top: -10}}>$120</Text>
-        </View>
-</View>
-<View style={styles.View5}>
-    <Text style={{fontSize: 30, color:'orange', left: 20, top: 20}}>View All</Text>
-</View>
+ <View style={styles.itemsContainer}>
+                {sampleItems.map(item => (
+                    <View key={item.id} style={styles.item}>
+                        <Image style={{ height: 230, width: 170, marginTop:30, }} source={item.image} />
+                        <TouchableOpacity onPress={() => addToCart(item)}>
+                            <View style={styles.circle}>
+                                <Icon style={{ left: 6 }} name="plus" size={20} color="black" />
+                            </View>
+                        </TouchableOpacity>
+                        <Text style={{ fontSize: 20, fontWeight: '500', marginTop: 0, bottom:25 }}>{item.name}</Text>
+                        <Text style={{ fontSize: 15, bottom:25 }}>reversible angora cardigan</Text>
+                        <Text style={{ fontSize: 30, color: 'orange', bottom:25 }}>${item.price}</Text>
+                    </View> 
+                ))}
+            </View>
 </ScrollView>
         
     );
@@ -159,6 +155,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 20,
         bottom: -40,
+    },
+    itemsContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        padding: 15,
+        bottom: -40,
+    },
+    item: {
+        marginTop: -20,
+        
     },
     MenuImg: {
         width: 30,
@@ -206,40 +213,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
     },
-    View1: {
-        flexDirection: 'row',
-        top: 60,
-        height: 310,
-        justifyContent: 'space-between',
-        alignContent: 'center',
-        zIndex: 1,
-    },
-    View2: {
-        flexDirection: 'row',
-        top: 65,
-        height: 300,
-        justifyContent: 'space-between',
-    },
-    View3: {
-        flexDirection: 'row',
-        top: 70,
-        height: 300,
-        justifyContent: 'space-between',
-    },
-    View4: {
-        flexDirection: 'row',
-        top: 75,
-        height: 320,
-        marginBottom:10,
-        justifyContent: 'space-between',
-    },
-    View5: {
-        flexDirection: 'row',
-        top: 160,
-        height: 50,
-        backgroundColor: 'black',
-        justifyContent: 'center',
-    },
+
+    
     circle: {
         width: 30,
         height: 30,
@@ -247,17 +222,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1,
         left: 138,
-        bottom: 20
+        bottom: 35
     },
-    circle2: {
-        width: 30,
-        height: 30,
-        borderRadius: 50,
-        justifyContent: 'center',
-        borderWidth: 1,
-        left: 95,
-        bottom: 20
-    },
+  
     ListCon: {
         backgroundColor: 'lightgrey',
         height: 75,
