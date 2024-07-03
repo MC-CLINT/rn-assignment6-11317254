@@ -1,9 +1,9 @@
 # rn-assignment6-11317254
 
-## *Student ID:* 11317254
+### *Student ID:* 11317254
 
 
-## Brief explanation of design choices and how data storage was implemented
+## Brief explanation of design choices and implementation of data storage
 
 
 ### **Design Choices:**
@@ -28,3 +28,7 @@ The `removeFromCart` function manages item removal from the cart. When an item i
 In HomeScreen.js, `AsyncStorage` is similarly utilized to manage cart data, ensuring items added to the cart are persistently stored across sessions. The `addToCart` function retrieves the current cart contents from `AsyncStorage`, parses the data, adds the new item, and saves the updated cart back to `AsyncStorage` in JSON format.
 
 This approach ensures that items added to the cart are immediately stored and available in future sessions. By leveraging `AsyncStorage`, the app maintains the cart's state across user sessions, providing a consistent and reliable experience. The use of asynchronous operations ensures smooth and responsive interactions, enhancing the overall performance and usability of the app.
+
+
+
+## ScreenShots of the App
